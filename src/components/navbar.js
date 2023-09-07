@@ -1,20 +1,62 @@
+import React, { useState } from 'react';
+import pic from "./../pictures/temp.png"
+
 function NavBar() {
+
+  const [isOpen, setIsOpen] = useState(false);
+  const navStyle = {
+    position: "sticky",
+    top: 0,
+    background: "teal", // Add background color if needed
+    zIndex: 1000, // Adjust the z-index as needed
+  };
+
+
   return (
-    <nav className="navbar">
-      <ul className="nav-list">
-        <li className="nav-item">
-          <a href="/">Home</a>
-        </li>
-        <li className="nav-item">
-          <a href="/about">About</a>
-        </li>
-        <li className="nav-item">
-          <a href="/services">Services</a>
-        </li>   
-        <li className="nav-item">
-          <a href="/contact">Contact</a>
-        </li>
-      </ul>
+    <nav style={navStyle} className="flex items-center justify-between flex-wrap p-6 border-b border-gray-300">
+      <div className="flex items-center flex-shrink-0 text-white mr-6 lg:mr-72">
+        <img src={pic} className="w-100 h-10 mr-2" alt="Logo" />
+      </div>
+      <div className="block lg:hidden">
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="flex items-center px-3 py-2 rounded text-black-500 hover:text-black-400"
+        >
+          <svg
+            className={`fill-current h-3 w-3 ${isOpen ? "hidden" : "block"}`}
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+          </svg>
+          <svg
+            className={`fill-current h-3 w-3 ${isOpen ? "block" : "hidden"}`}
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z" />
+          </svg>
+        </button>
+      </div>
+      <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+          <a href="/" className="block mt-4 lg:inline-block lg:mt-0 text-white-200 mr-4">
+            Home
+          </a>
+          <a href="/about" className="block mt-4 lg:inline-block lg:mt-0 text-white-200 mr-4">
+            About
+          </a>
+          <a href="/services" className="block mt-4 lg:inline-block lg:mt-0 text-white-200 mr-4">
+            Services
+          </a>
+          <a href="/contact" className="block mt-4 lg:inline-block lg:mt-0 text-white-200 mr-4">
+            Contact
+          </a>
+        </div>
+        <div>
+          <button className="inline-flex items-center bg-amber-500 border-0 py-2 px-4 text-white">
+            905 999 1234
+          </button>
+      </div>
     </nav>
   );
 }
